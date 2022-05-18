@@ -9,7 +9,27 @@
                     <p class="text-xs text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
                 </div>
             </div>
-            <svg class="w-16" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            @can('delete', $post)
+                <div class="flex">
+                    <form action="{{ route('posts.destroy', $post) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-none">
+                            <svg class="h-6 w-6 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button>
+                    </form>
+                    <a href="{{ route('posts.show', $post) }}">
+                        <svg class="h-6 w-6 text-blue-500"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
+                            <path stroke="none" d="M0 0h24v24H0z"/> 
+                            <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /> 
+                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" /> 
+                            <line x1="16" y1="5" x2="19" y2="8" />
+                        </svg>
+                    </a>
+                </div> 
+            @endcan   
         </div>
         <p>
             {{ $post->body }}
@@ -37,7 +57,7 @@
                     <span class="font-semibold text-lg text-gray-600">{{$post->user->count()}} {{ Str::plural('Comment', 2) }}</span>
                 </button>
                 <button class="flex flex-row justify-center items-center w-full space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#838383" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                    <span class="font-semibold text-lg text-gray-600">bagikan</span>
+                    <span class="font-semibold text-lg text-gray-600">{{$post->user->count()}} {{ Str::plural('Unlike', 3) }}</span>
                 </button>
             </div>
         <hr>

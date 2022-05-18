@@ -16,7 +16,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->with(['user', 'category'])->get();
-        print_r($posts[0]->category->id);
         return view('home', [
             'posts' => $posts,
             'categories' => Category::all(),
@@ -30,10 +29,42 @@ class PostController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $request->user()->posts()->create([
-            'body' => $request->body,
-            'category_id' => $request->category,
+        $post = new Post;
+        $post->body = $request->body;
+        $post->category_id = $request->category_id;
+        $post->user_id = auth()->user()->id;
+        $post->save();
+
+        return back();
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post,
         ]);
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        $this->validate($request, [
+            'body' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $post->update([
+            'body' => request('body'),
+            'category_id' => request('category_id'),
+        ]);
+
+        return back();
+    }
+
+    public function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
+
+        $post->delete();
 
         return back();
     }
