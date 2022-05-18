@@ -40,8 +40,11 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $categories = Category::all()->where('id', '!=', $post->category_id);
+        $post = Post::with(['user', 'category'])->find($post->id);
         return view('posts.show', [
             'post' => $post,
+            'categories' => $categories,
         ]);
     }
 
