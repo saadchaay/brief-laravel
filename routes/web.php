@@ -9,9 +9,9 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 
-// Route::get('/', function () {
-//     return view('home');
-// })->name('home');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
 
 Route::get('/', [PostController::class, 'index'])->name('home.index');

@@ -22,4 +22,19 @@ class PostController extends Controller
             'categories' => Category::all(),
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'body' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $request->user()->posts()->create([
+            'body' => $request->body,
+            'category_id' => $request->category,
+        ]);
+
+        return back();
+    }
 }
