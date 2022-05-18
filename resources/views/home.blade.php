@@ -13,11 +13,24 @@
                 <span class="font-medium subpixel-antialiased">Post</span>
             </button>      
         </div>
-        <div class="flex flex-col ">
+        <div class="flex flex-col w-full">
+            @if ($posts->count())
+            <div class="flex flex-col justify-center items-center">
+                @foreach ($posts as $post)
+                    <x-post :post="$post" />
+                @endforeach
+            </div>
+                
+                {{-- {{ $posts->links() }} --}}
+            @else
+                <p>There are no posts</p>
+            @endif
+        </div> 
+        {{-- <div class="flex flex-col ">
             @foreach ($posts as $post)
-                <x-post :post="$post"></x-post>
+                    <x-post :post="$post"></x-post>
             @endforeach
-        </div>
+        </div> --}}
         
     </div>
 @endsection
