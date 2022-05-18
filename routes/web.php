@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [PostController::class, 'index'])->name('home.index');
 
 Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
 
