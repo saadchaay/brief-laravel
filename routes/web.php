@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 Route::get('/', [PostController::class, 'index'])->name('home.index');
 
-Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
+// Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
@@ -32,5 +32,5 @@ Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
-Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
-Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
+// Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
+// Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');

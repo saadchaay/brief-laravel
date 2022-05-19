@@ -54,13 +54,12 @@ class PostController extends Controller
             'body' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
-
+        $post->category_id = $request->category_id;
         $post->update([
-            'body' => request('body'),
-            'category_id' => request('category_id'),
+            'body' => $request->body,
         ]);
 
-        return back();
+        return redirect()->route('home.index');
     }
 
     public function destroy(Post $post)
