@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -29,11 +30,16 @@ class PostController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $post = new Post;
-        $post->body = $request->body;
-        $post->category_id = $request->category_id;
-        $post->user_id = auth()->user()->id;
-        $post->save();
+        $category = Category::find($request->category_id);
+        $category->posts()->create([
+            'body' => $request->body,
+            'user_id' => auth()->user()->id,
+        ]);
+        // $post = new Post;
+        // $post->body = $request->body;
+        // $post->category_id = $request->category_id;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
 
         return back();
     }

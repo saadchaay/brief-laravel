@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Post;
 
 class CommentController extends Controller
@@ -16,12 +16,12 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'body' => 'required',
+            'comment' => 'required',
         ]);
 
         $post = Post::find($request->post_id);
         $post->comments()->create([
-            'body' => $request->body,
+            'body' => $request->comment,
             'user_id' => auth()->user()->id,
         ]);
 
