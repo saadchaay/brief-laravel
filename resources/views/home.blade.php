@@ -31,7 +31,7 @@
             @if ($posts->count())
             <div class="flex flex-col justify-center items-center">
                 @foreach ($posts as $post)
-                    <x-post :post="$post" />
+                    <x-post :post="$post" :comments="$post->comments" />
                 @endforeach
             </div>
                 

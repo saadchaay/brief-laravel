@@ -1,4 +1,4 @@
-@props(['post' => $post])
+@props(['post' => $post, 'comments' => $comments])
 
     <div class="bg-white w-8/12 rounded-md shadow-md h-auto py-3 px-3 my-3">
         <div class="w-full h-16 flex items-center flex justify-between ">
@@ -74,5 +74,11 @@
                 </div>
             @enderror
         </form>
+
+        <div class="">
+            @foreach ($comments as $item)
+                <div>{{$item}}</div>
+            @endforeach
+        </div>
         
     </div>

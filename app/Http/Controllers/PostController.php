@@ -15,7 +15,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->with(['user', 'category'])->get();
+        $posts = Post::latest()->with(['user', 'category', 'comments'])->get();
         return view('home', [
             'posts' => $posts,
             'categories' => Category::all(),
@@ -29,11 +29,6 @@ class PostController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        // $category = Category::find($request->category_id);
-        // $category->posts()->create([
-        //     'body' => $request->body,
-        //     'user_id' => auth()->user()->id,
-        // ]);
         $post = new Post;
         $post->body = $request->body;
         $post->category_id = $request->category_id;
