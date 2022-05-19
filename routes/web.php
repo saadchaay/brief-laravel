@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 
 Route::get('/', function () {
     return view('home');
@@ -37,6 +38,8 @@ Route::get('/comments', [CommentController::class, 'index'])->name('comments');
 Route::post('/comments', [CommentController::class, 'store']);
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+
+Route::post('/likes/{post}', [LikeController::class, 'store'])->name('likes.store');
 
 // Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
 // Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');

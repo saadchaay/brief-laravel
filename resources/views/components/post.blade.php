@@ -47,7 +47,7 @@
                     <div class="z-10 rounded-full flex items-center justify-center ">
                         <svg class="h-6 w-6 text-gray-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />  <polyline points="17 18 23 18 23 12" /></svg>    
                     </div>
-                    <p class="mx-3 text-gray-500">7 Dislikes</p>
+                    <p class="mx-3 text-gray-500">7 Unlike</p>
                 </div>
             </div>
             <div class="">
@@ -58,11 +58,15 @@
         </div>
         <hr>
             <div class="flex justify-between w-full my-3">
-                <button class="flex flex-row justify-center items-center w-full space-x-3">
-                    <span class="font-semibold text-lg text-gray-600">{{$post->user->count()}}
-                        <span class="underline">{{ Str::plural('Like', 1) }}</span> 
-                    </span>
-                </button>
+                <form action="{{ route('likes.store', $post) }}" method="post" class="flex flex-row justify-center items-center">
+                    @csrf
+                    <button class="flex flex-row justify-center items-center w-full space-x-3">
+                        <span class="font-semibold text-lg text-gray-600"> {{$post->likes->count()}}
+                            <span class="underline">{{ Str::plural('Like', 1) }}</span> 
+                        </span>
+                    </button>
+                </form>
+                
                 <button class="flex flex-row justify-center items-center w-full space-x-3">
                     <span class="font-semibold text-lg text-gray-600">{{$post->user->count()}}
                         <span class="underline">{{ Str::plural('Unlike', 1) }}</span> 
@@ -91,9 +95,9 @@
             @foreach ($comments as $item)
                 <div class="flex flex-col items-start justify-start my-1 mx-4">
                          <div class="text-xs my-3 font-bold">
-                            <span>{{ auth()->user()->name }}</span>
+                            <span>{{ $item->user->name }}</span>
                         </div>
-                        <div class="bg-gray-100 rounded-lg px-5 py-3 mb-2">
+                        <div class="bg-gray-100 rounded-full px-10 py-3 mb-2">
                             <span class="text-sm w-auto">{{ $item->body }}</span>
                         </div>
                         <span class="flex justify-start items-center">

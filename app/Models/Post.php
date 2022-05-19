@@ -16,7 +16,7 @@ class Post extends Model
         return $this->likes->contains('user_id', $user->id);
     }
 
-    public function commentBy(User $user)
+    public function commentedBy(User $user)
     {
         return $this->comments->contains('user_id', $user->id);
     }
