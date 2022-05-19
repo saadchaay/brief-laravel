@@ -66,19 +66,19 @@
                 <form action="{{ route('likes.store', $post) }}" method="post" class="flex flex-row justify-center items-center w-full">
                     @csrf
                     <button type="submit" class="">
-                        <span class="font-semibold text-sm text-gray-600"> {{$post->likes->count()}}
+                        <span class="font-semibold text-base text-gray-600 hover:text-blue-800"> {{$post->likes->count()}}
                             <span class="underline">{{ Str::plural('Like', 1) }}</span> 
                         </span>
                     </button>
                 </form>
                 {{-- @endif --}}
                 <button class="flex flex-row justify-center items-center w-full space-x-3">
-                    <span class="font-semibold text-lg text-gray-600">{{$post->user->count()}}
+                    <span class="font-semibold text-base text-gray-600 hover:text-blue-800">{{$post->user->count()}}
                         <span class="underline">{{ Str::plural('Unlike', 1) }}</span> 
                     </span>
                 </button>
                 <button class="flex flex-row justify-center items-center w-full space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#838383" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    <span class="font-semibold text-lg text-gray-600">{{ $comments->count() }} {{ Str::plural('Comment', $comments->count()) }}</span>
+                    <span class="font-semibold text-base text-gray-600">{{ $comments->count() }} {{ Str::plural('Comment', $comments->count()) }}</span>
                 </button>
             </div>
         <hr>
