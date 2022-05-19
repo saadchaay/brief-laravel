@@ -34,17 +34,10 @@
                     <x-post :post="$post" :comments="$post->comments" />
                 @endforeach
             </div>
-                
-                {{-- {{ $posts->links() }} --}}
             @else
                 <p>There are no posts</p>
             @endif
-        </div> 
-        {{-- <div class="flex flex-col ">
-            @foreach ($posts as $post)
-                    <x-post :post="$post"></x-post>
-            @endforeach
-        </div> --}}
+        </div>
         
     </div>
 @endsection

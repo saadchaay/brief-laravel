@@ -75,9 +75,32 @@
             @enderror
         </form>
 
-        <div class="">
+        <div class="overflow-y-scroll max-h-80 mt-3">
             @foreach ($comments as $item)
-                <div>{{$item}}</div>
+                <div class="flex flex-col items-start justify-start my-1 mx-4">
+                         <div class="text-xs my-3 font-bold">
+                            <span>{{ auth()->user()->name }}</span>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg px-5 py-3 mb-2">
+                            <span class="text-sm w-auto">{{ $item->body }}</span>
+                        </div>
+                        <span class="flex justify-start items-center">
+                            <span class="text-xs text-gray-700 px-2 justify-center">
+                                {{ $item->created_at->diffForHumans() }}
+                            </span>
+                            @can('delete', $item)
+                                <form action="{{ route('comments.destroy', $item) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="">
+                                        <span class="text-xs text-gray-700 px-2 justify-center underline">
+                                            delete
+                                        </span>
+                                    </button>
+                                </form>
+                            @endcan
+                        </span> 
+                </div>
             @endforeach
         </div>
         
