@@ -26,8 +26,8 @@
                     {{ $message }}
                 </div>
             @enderror
-            <button type="submit" class="flex items-center rounded-lg bg-indigo-500 px-4 py-2 text-white mt-4 w-1/6">
-                <span class="font-medium subpixel-antialiased">Update</span>
+            <button type="submit" class="flex items-center rounded-lg bg-indigo-500 px-4 py-2 text-white mt-4 w-1/6 text-center">
+                Update
             </button>
         </div>
     </form>
