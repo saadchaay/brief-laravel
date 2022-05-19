@@ -18,7 +18,7 @@
                     {{ $message }}
                 </div>
             @enderror
-            <textarea class="description bg-gray-100 sec p-3 rounded-lg h-50 border border-gray-300 " spellcheck="false" placeholder="Describe everything about this post here" name="body"></textarea>
+            <textarea class="description bg-gray-100 sec p-3 rounded-lg h-50 border border-gray-300 " spellcheck="false" placeholder="Describe everything about this post here" name="body">{{ $post->body }}</textarea>
             @error('body')
                 <div class="text-red-500 mt-2 text-sm">
                     {{ $message }}
