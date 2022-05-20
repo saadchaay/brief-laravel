@@ -38,7 +38,7 @@
                     @enderror
                 </div>
 
-                {{-- <div class="mb-4">
+                <div class="mb-4">
                     <label for="phone" class="sr-only">Phone</label>
                     <input type="text" name="phone" id="phone" placeholder="Your phone" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('phone') border-red-500 @enderror" value="{{ old('phone') }}">
 
@@ -47,7 +47,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div> --}}
+                </div>
 
                 <div class="mb-4">
                     <label for="password" class="sr-only">Password</label>

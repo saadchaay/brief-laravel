@@ -35,7 +35,11 @@
                 @endforeach
             </div>
             @else
-                <p>There are no posts</p>
+                <div class="flex justify-center mt-3 ">
+                    <div class="w-8/12 bg-white p-6 rounded-lg font-bold">
+                        There are no posts
+                    </div>
+                </div>
             @endif
         </div>
         
