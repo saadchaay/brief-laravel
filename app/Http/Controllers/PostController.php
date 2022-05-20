@@ -15,8 +15,17 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->with(['user', 'category', 'comments', 'likes'])->get();
+        $posts = Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
         return view('home', [
+            'posts' => $posts,
+            'categories' => Category::all(),
+        ]);
+    }
+    
+    public function all()
+    {
+        $posts = Post::latest()->where('user_id', auth()->user()->id)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+        return view('posts.index', [
             'posts' => $posts,
             'categories' => Category::all(),
         ]);

@@ -3,7 +3,8 @@
     <div class="bg-white w-8/12 rounded-md shadow-md h-auto py-3 px-3 my-3">
         <div class="w-full h-16 flex items-center flex justify-between ">
             <div class="flex">
-                <img class=" rounded-full w-10 h-10 mr-3" src="https://scontent.fsub1-1.fna.fbcdn.net/v/t1.0-9/37921553_1447009505400641_8037753745087397888_n.jpg?_nc_cat=102&_nc_sid=09cbfe&_nc_oc=AQnDTnRBxV3QgnhKOtk9AiziIOXw0K68iIUQfdK_rlUSFgs8fkvnQ6FjP6UBEkA6Zd8&_nc_ht=scontent.fsub1-1.fna&oh=728962e2c233fec37154419ef79c3998&oe=5EFA545A" alt="">
+                <img class="rounded-full w-10 h-10 border border-gray-100 shadow-sm mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="user image" />
+                {{-- <img class=" rounded-full w-10 h-10 " src="https://scontent.fsub1-1.fna.fbcdn.net/v/t1.0-9/37921553_1447009505400641_8037753745087397888_n.jpg?_nc_cat=102&_nc_sid=09cbfe&_nc_oc=AQnDTnRBxV3QgnhKOtk9AiziIOXw0K68iIUQfdK_rlUSFgs8fkvnQ6FjP6UBEkA6Zd8&_nc_ht=scontent.fsub1-1.fna&oh=728962e2c233fec37154419ef79c3998&oe=5EFA545A" alt=""> --}}
                 <div>    
                     <h3 class="text-md font-semibold ">{{ $post->user->name }}</h3>
                     <p class="text-xs text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
@@ -51,7 +52,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"/>
                         </svg>    
                     </div>
-                    <p class="mx-3 text-gray-500">7 Unlike</p>
+                    <p class="mx-3 text-gray-500">{{ $post->unLikes->count() }} {{ Str::plural('Unlike', $post->unLikes->count()) }}</p>
                 </div>
             </div>
             <div class="">
@@ -65,19 +66,23 @@
                 {{-- @if (!$post->likedBy(auth()->user())) --}}
                 <form action="{{ route('likes.store', $post) }}" method="post" class="flex flex-row justify-center items-center w-full">
                     @csrf
-                    <button type="submit" class="">
+                    <button type="submit">
                         <span class="font-semibold text-base text-gray-600 hover:text-blue-800"> {{$post->likes->count()}}
-                            <span class="underline">{{ Str::plural('Like', 1) }}</span> 
+                            <span class="underline">{{ Str::plural('Like', $post->likes->count()) }}</span> 
+                        </span>
+                    </button>
+                </form>
+                <form action="{{ route('unlike.store', $post) }}" method="post" class="flex flex-row justify-center items-center w-full">
+                    @csrf
+                    <button type="submit">
+                        <span class="font-semibold text-base text-gray-600 hover:text-blue-800">{{ $post->unLikes->count() }}
+                            <span class="underline">{{ Str::plural('Unlike', $post->unLikes->count()) }}</span> 
                         </span>
                     </button>
                 </form>
                 {{-- @endif --}}
-                <button class="flex flex-row justify-center items-center w-full space-x-3">
-                    <span class="font-semibold text-base text-gray-600 hover:text-blue-800">{{$post->user->count()}}
-                        <span class="underline">{{ Str::plural('Unlike', 1) }}</span> 
-                    </span>
-                </button>
-                <button class="flex flex-row justify-center items-center w-full space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#838383" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                
+                <button class="flex flex-row justify-center items-center w-full space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#838383" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     <span class="font-semibold text-base text-gray-600">{{ $comments->count() }} {{ Str::plural('Comment', $comments->count()) }}</span>
                 </button>
             </div>

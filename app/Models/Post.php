@@ -15,6 +15,11 @@ class Post extends Model
     {
         return $this->likes->contains('user_id', $user->id);
     }
+    
+    public function unLikedBy(User $user)
+    {
+        return $this->unLikes->contains('user_id', $user->id);
+    }
 
     public function commentedBy(User $user)
     {
@@ -34,6 +39,11 @@ class Post extends Model
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function unLikes()
+    {
+        return $this->hasMany(Unlike::class);
     }
 
     public function comments()

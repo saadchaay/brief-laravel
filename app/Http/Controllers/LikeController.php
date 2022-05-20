@@ -17,11 +17,11 @@ class LikeController extends Controller
         if($post->likedBy(auth()->user())) {
             $post->likes()->where('user_id', auth()->user()->id)->delete();
         } else {
-            $post->likes()->create([
+            $post->unLikes()->where('user_id', auth()->user()->id)->delete();
+            $post->likes()->create([    
                 'user_id' => auth()->user()->id,
             ]);
         }
-
         return back();
     }
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\UnlikeController;
 
 Route::get('/', function () {
     return view('home');
@@ -29,6 +30,7 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/posts/all', [PostController::class, 'all'])->name('posts.all');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
@@ -40,6 +42,7 @@ Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->nam
 Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
 
 Route::post('/likes/{post}', [LikeController::class, 'store'])->name('likes.store');
+Route::post('/unlike/{post}', [UnlikeController::class, 'store'])->name('unlike.store');
 
 // Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
 // Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
