@@ -46,6 +46,7 @@ Route::post('/likes/{post}', [LikeController::class, 'store'])->name('likes.stor
 Route::post('/unlike/{post}', [UnlikeController::class, 'store'])->name('unlike.store');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::put('/profile/{$user}', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
 // Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');

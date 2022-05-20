@@ -11,15 +11,17 @@
         <div class="bg-white p-6 rounded-lg font-bold w-full my-2">
             <div class="w-4/12 font-medium my-3">
                 Update user information
+                {{$user}}
             </div>
-            <form action="{{ route('profile') }}" method="post" class="w-auto">
+            <form action="{{ route('profile.update', $user) }}" method="post" class="w-auto">
                 @csrf
+                @method('PUT')
                 <div class="flex flex-col">
                     <div class="w-auto my-2">
-                        <label for="fullName" class="sr-only">Name</label>
-                        <input type="text" name="fullName" id="fullName" placeholder="Your full name" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('fullName') border-red-500 @enderror" value="{{ $user->name }}">
+                        <label for="name" class="sr-only">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Your full name" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror" value="{{ $user->name }}">
 
-                        @error('fullName')
+                        @error('name')
                             <div class="text-red-500 mt-2 text-sm">
                                 {{ $message }}
                             </div>
