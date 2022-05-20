@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+    
     public function index()
     {
-        return view('profile.index');
+        $user = auth()->user();
+        return view('profile.index', compact('user'));
     }
 }
