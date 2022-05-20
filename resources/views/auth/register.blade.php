@@ -38,6 +38,17 @@
                     @enderror
                 </div>
 
+                {{-- <div class="mb-4">
+                    <label for="phone" class="sr-only">Phone</label>
+                    <input type="text" name="phone" id="phone" placeholder="Your phone" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('phone') border-red-500 @enderror" value="{{ old('phone') }}">
+
+                    @error('phone')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div> --}}
+
                 <div class="mb-4">
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" name="password" id="password" placeholder="Choose a password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password') border-red-500 @enderror" value="">

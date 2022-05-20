@@ -41,7 +41,9 @@
                 @endforeach
             </div>
             @else
-                <p>There are no posts</p>
+                <div class="font-bold py-1 px-2 mb-4 bg-gray-200 rounded-lg w-1/6">
+                    There are no posts
+                </div>
             @endif
         </div>
     </div>
