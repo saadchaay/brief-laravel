@@ -6,7 +6,7 @@
             <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">
                 @csrf
                 <select name="category_id" class="title bg-gray-100 border rounded-lg border-gray-300 p-2 mb-3 outline-none">
-                        <option value=""><span class="text-blue-800">choose category ...</span> </option>
+                        <option value=""><span class="text-blue-800">otmane category ...</span> </option>
                     @foreach ($categories as $category)
                         <x-category :category="$category" />
                     @endforeach
