@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnlikeController;
 
 Route::get('/', function () {
@@ -43,6 +44,8 @@ Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('c
 
 Route::post('/likes/{post}', [LikeController::class, 'store'])->name('likes.store');
 Route::post('/unlike/{post}', [UnlikeController::class, 'store'])->name('unlike.store');
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 // Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
 // Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
