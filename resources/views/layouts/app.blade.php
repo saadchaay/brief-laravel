@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Posty</title>
-
+        <title>Forum It News</title>
+        <link rel="shortcut icon" type="image/png" sizes="16x16" rel="icon" href=".../icons8-forum-16.png">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body class="bg-gray-200">

@@ -38,6 +38,14 @@ class ProfileController extends Controller
         } else {
             return redirect()->route('login');
         }
-        
+    }
+
+    public function edit(User $user, Request $request)
+    {
+        $this->validate(request(), [
+            'oldPassword' => 'required|max:255|min:6',
+            'username' => 'required|max:255',
+            'email' => 'required|email|max:255',
+        ]);
     }
 }

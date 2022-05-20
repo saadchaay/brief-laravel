@@ -11,7 +11,6 @@
         <div class="bg-white p-6 rounded-lg font-bold w-full my-2">
             <div class="w-4/12 font-medium my-3">
                 Update user information
-                {{$user}}
             </div>
             <form action="{{ route('profile.update', $user) }}" method="post" class="w-auto">
                 @csrf
@@ -71,8 +70,9 @@
             <div class="w-4/12 font-medium my-3">
                 Update password
             </div>
-            <form action="{{ route('profile') }}" method="post">
+            <form action="{{ route('profile.edit', $user) }}" method="post">
                 @csrf
+                @method('PATCH')
                 <div class="flex flex-col justify-center">
                     <div class="w-auto my-2">
                         <label for="oldPassword" class="sr-only">Old Password</label>
