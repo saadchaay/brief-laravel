@@ -27,6 +27,32 @@
                 </button>
             </div>
         </form>
+
+        <div class="w-8/12 bg-white p-4 rounded-lg font-bold">
+            <div class="w-auto">
+                <form action="" method="post" class="flex justify-between items-center flex-wrap">
+                    @csrf
+                    <div class="flex justify-start flex-wrap w-auto">
+                        <select name="category" class="title border rounded-lg border-gray-300 py-2 px-2 outline-none">
+                            <option value="">Choose category ...</option>
+                            @foreach ($categories as $category)
+                                <x-category :category="$category" />
+                            @endforeach
+                        </select>
+                        <select name="category" class="border rounded-lg border-gray-300 py-2 px-2 ml-1">
+                            <option value="">Top post</option>
+                            <option value="">Newest post</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button>
+                            <span class="font-medium subpixel-antialiased underline hover:text-blue-700">Filter</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="flex flex-col w-full">
             @if ($posts->count())
             <div class="flex flex-col justify-center items-center">

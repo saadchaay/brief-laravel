@@ -76,30 +76,30 @@
                 <div class="flex flex-col justify-center">
                     <div class="w-auto my-2">
                         <label for="oldPassword" class="sr-only">Old Password</label>
-                        <input type="text" name="oldPassword" id="oldPassword" placeholder="Old Password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('oldPassword') border-red-500 @enderror">
+                        <input type="password" name="oldPassword" id="oldPassword" placeholder="Old Password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('oldPassword') border-red-500 @enderror">
 
                         @error('oldPassword')
-                            <div class="text-red-500 mt-2 text-sm">
+                            <div class="text-red-500 mt-2 text-xs">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="w-auto my-2">
                         <label for="newPassword" class="sr-only">New Password</label>
-                        <input type="text" name="newPassword" id="newPassword" placeholder="new Password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('newPassword') border-red-500 @enderror">
+                        <input type="password" name="newPassword" id="newPassword" placeholder="new Password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('newPassword') border-red-500 @enderror">
 
                         @error('newPassword')
-                            <div class="text-red-500 mt-2 text-sm">
+                            <div class="text-red-500 mt-2 text-xs">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="w-auto my-2">
-                        <label for="oldPassword" class="sr-only">Old Password</label>
-                        <input type="text" name="oldPassword" id="oldPassword" placeholder="Old Password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('oldPassword') border-red-500 @enderror">
+                        <label for="confirmPassword" class="sr-only">Confirm password</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('confirmPassword') border-red-500 @enderror">
 
-                        @error('oldPassword')
-                            <div class="text-red-500 mt-2 text-sm">
+                        @error('confirmPassword')
+                            <div class="text-red-500 mt-2 text-xs">
                                 {{ $message }}
                             </div>
                         @enderror
