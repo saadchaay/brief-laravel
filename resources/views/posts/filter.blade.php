@@ -40,6 +40,7 @@
                             @endforeach
                         </select>
                         <select name="byPost" class="border rounded-lg border-gray-300 py-2 px-2 ml-1">
+                            <option value="top">Sorted by ...</option>
                             <option value="top">Top post</option>
                             <option value="newest">Newest post</option>
                         </select>
