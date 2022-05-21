@@ -57,9 +57,9 @@
                       </div>
                     </div>
                   </td>
-                  <td class="px-4 py-3 text-ms font-semibold border">22</td>
-                  <td class="px-4 py-3 text-xs border overflow-y-scroll max-h-40 w-1/4">
-                    <span class="px-2 py-1 font-semibold"> {{$post->body}} </span>
+                  <td class="px-4 py-3 text-xs font-semibold border w-">{{$post->category->title}}</td>
+                  <td class="px-4 py-3 text-xs border w-1/4">
+                    <span class="px-2 py-1 font-semibold">{{$post->body}}</span>
                   </td>
                   <td class="px-4 py-3 text-sm border">6/4/2000</td>
                   <td class="px-4 py-3 text-sm border">6/4/2000</td>
