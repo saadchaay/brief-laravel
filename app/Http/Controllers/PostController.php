@@ -73,7 +73,20 @@ class PostController extends Controller
 
     public function filter(Request $request)
     {
-        if($request->category)
+        if(!empty($request->category) && !empty($request->byPost) ) {
+            switch ($request->byPost) {
+                case 'newest':
+                    $posts = Post::latest()->where('id_category', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+                    return view('posts.index', [
+                        'posts' => $posts,
+                        'categories' => Category::all(),
+                    ]);
+                    break;
+                // case 'top':
+                //     $posts = Post::sorted()
+                //     break;
+            }
+        }
     }
 
     public function destroy(Post $post)
