@@ -76,16 +76,26 @@ class PostController extends Controller
         if(!empty($request->category) && !empty($request->byPost) ) {
             switch ($request->byPost) {
                 case 'newest':
-                    $posts = Post::latest()->where('id_category', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
-                    return view('posts.index', [
+                    $posts = Post::latest()->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+                    return view('home', [
                         'posts' => $posts,
                         'categories' => Category::all(),
                     ]);
                     break;
-                // case 'top':
-                //     $posts = Post::sorted()
-                //     break;
+                case 'top':
+                    $posts = Post::latest()->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+                    return view('home', [
+                        'posts' => $posts,
+                        'categories' => Category::all(),
+                    ]);
+                    break;
             }
+        } else {
+            $posts = Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+            return view('home', [
+                'posts' => $posts,
+                'categories' => Category::all(),
+            ]);
         }
     }
 
