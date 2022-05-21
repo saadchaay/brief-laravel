@@ -36,7 +36,7 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-Route::get('/posts', [PostController::class, 'filter'])->name('posts.filter');
+Route::post('/category', [PostController::class, 'filter'])->name('filter');
 
 Route::get('/comments', [CommentController::class, 'index'])->name('comments');
 Route::post('/comments', [CommentController::class, 'store']);

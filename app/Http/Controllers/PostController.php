@@ -81,14 +81,15 @@ class PostController extends Controller
                         'posts' => $posts,
                         'categories' => Category::all(),
                     ]);
-                    break;
+                break;
                 case 'top':
-                    $posts = Post::latest()->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+                    $posts = Post::withCount('likes');
+                    $posts = $posts->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->orderBy('likes_count', 'desc')->get();
                     return view('home', [
                         'posts' => $posts,
                         'categories' => Category::all(),
                     ]);
-                    break;
+                break;
             }
         } else {
             $posts = Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();

@@ -30,7 +30,7 @@
 
         <div class="w-8/12 bg-white p-4 rounded-lg font-bold">
             <div class="w-auto">
-                {{-- <form action="{{ route('posts.filter') }}" method="get" class="flex justify-between items-center flex-wrap">
+                <form action="{{ route('filter') }}" method="post" class="flex justify-between items-center flex-wrap">
                     @csrf
                     <div class="flex justify-start flex-wrap w-auto">
                         <select name="category" class="title border rounded-lg border-gray-300 py-2 px-2 outline-none">
@@ -49,7 +49,7 @@
                             <span class="font-medium subpixel-antialiased underline hover:text-blue-700">Filter</span>
                         </button>
                     </div>
-                </form> --}}
+                </form>
             </div>
         </div>
 
