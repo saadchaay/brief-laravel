@@ -3,15 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\PostLikeController;
-use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnlikeController;
+use App\Http\Controllers\Admin\AdminPostController;
 
 Route::get('/', function () {
     return view('home');
@@ -50,5 +48,4 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 Route::patch('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 
-// Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
-// Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
+Route::get('admin/posts', [AdminPostController::class, 'index'])->name('admin.posts');

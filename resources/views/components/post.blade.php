@@ -124,7 +124,7 @@
                                     </button>
                                 </form>
                             @endcan
-                        </span> 
+                        </span>
                 </div>
             @endforeach
         </div>
