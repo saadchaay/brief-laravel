@@ -3,9 +3,9 @@
 @section('content')
 <div class="flex flex-col justify-center items-center">
     <div class="w-8/12 bg-white p-6 rounded-lg font-bold">
-        Add Post
+        Update Post
     </div>
-    <form action="" method="post" clas="w-full flex flex-col justify-center items-center">
+    <form action="{{ route('admin.update', $post) }}" method="post" class="w-full flex flex-col justify-center items-center">
         @csrf
         <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">
             <select name="category_id" class="title bg-gray-100 border rounded-lg border-gray-300 p-2 mb-3 outline-none">

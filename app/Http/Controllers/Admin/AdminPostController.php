@@ -37,7 +37,31 @@ class AdminPostController extends Controller
 
         return back();
     }
-    
+
+    public function show(Post $post)
+    {
+        $categories = Category::all()->where('id', '!=', $post->category_id);
+        $post = Post::with(['user', 'category'])->find($post->id);
+        return view('admin.show', [
+            'post' => $post,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        $this->validate($request, [
+            'body' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        $post->category_id = $request->category_id;
+        $post->update([
+            'body' => $request->body,
+        ]);
+
+        return redirect()->route('admin.index');
+    }
+
     public function destroy(Post $post)
     {
         $post->delete();
