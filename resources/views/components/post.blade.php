@@ -4,7 +4,6 @@
         <div class="w-full h-16 flex items-center flex justify-between ">
             <div class="flex">
                 <img class="rounded-full w-10 h-10 border border-gray-100 shadow-sm mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="user image" />
-                {{-- <img class=" rounded-full w-10 h-10 " src="https://scontent.fsub1-1.fna.fbcdn.net/v/t1.0-9/37921553_1447009505400641_8037753745087397888_n.jpg?_nc_cat=102&_nc_sid=09cbfe&_nc_oc=AQnDTnRBxV3QgnhKOtk9AiziIOXw0K68iIUQfdK_rlUSFgs8fkvnQ6FjP6UBEkA6Zd8&_nc_ht=scontent.fsub1-1.fna&oh=728962e2c233fec37154419ef79c3998&oe=5EFA545A" alt=""> --}}
                 <div>    
                     <h3 class="text-md font-semibold ">{{ $post->user->name }}</h3>
                     <p class="text-xs text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
