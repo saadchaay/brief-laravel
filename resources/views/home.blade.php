@@ -6,7 +6,7 @@
             <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">
                 @csrf
                 <select name="category_id" class="title bg-gray-100 border rounded-lg border-gray-300 p-2 mb-3 outline-none">
-                        <option value=""><span class="text-blue-800">otmane category ...</span> </option>
+                        <option value=""><span class="text-blue-800">Choose category ...</span> </option>
                     @foreach ($categories as $category)
                         <x-category :category="$category" />
                     @endforeach
@@ -30,7 +30,7 @@
 
         <div class="w-8/12 bg-white p-4 rounded-lg font-bold">
             <div class="w-auto">
-                <form action="" method="post" class="flex justify-between items-center flex-wrap">
+                <form action="{{ route('posts.filter') }}" method="post" class="flex justify-between items-center flex-wrap">
                     @csrf
                     <div class="flex justify-start flex-wrap w-auto">
                         <select name="category" class="title border rounded-lg border-gray-300 py-2 px-2 outline-none">
@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div>
-                        <button>
+                        <button type="submit">
                             <span class="font-medium subpixel-antialiased underline hover:text-blue-700">Filter</span>
                         </button>
                     </div>

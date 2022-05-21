@@ -71,6 +71,11 @@ class PostController extends Controller
         return redirect()->route('home.index');
     }
 
+    public function filter(Request $request)
+    {
+        if($request->category)
+    }
+
     public function destroy(Post $post)
     {
         $this->authorize('delete', $post);
