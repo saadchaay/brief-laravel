@@ -21,4 +21,26 @@ class AdminPostController extends Controller
             'categories' => Category::all(),
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'body' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $post = new Post;
+        $post->body = $request->body;
+        $post->category_id = $request->category_id;
+        $post->user_id = auth()->user()->id;
+        $post->save();
+
+        return back();
+    }
+    
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return back();
+    }
 }

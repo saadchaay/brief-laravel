@@ -48,4 +48,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 Route::patch('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 
-Route::get('admin/posts', [AdminPostController::class, 'index'])->name('admin.posts');
+Route::get('/admin', [AdminPostController::class, 'index'])->name('admin.posts');
+// Route::get('/admin/posts/{post}', [AdminPostController::class, ''])->name('admin.posts.show');
+Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('admin.posts');
+Route::delete('/admin/{post}', [AdminPostController::class, 'destroy'])->name('admin.destroy');
