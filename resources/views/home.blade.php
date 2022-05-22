@@ -3,7 +3,6 @@
 @section('content')
     <div class="flex flex-col justify-center items-center">
         <x-form :categories="$categories" :action="route('posts')" />
-        
         <div class="w-8/12 bg-white p-4 rounded-lg font-bold">
             <div class="w-auto">
                 <form action="{{ route('filter') }}" method="post" class="flex justify-between items-center flex-wrap">
