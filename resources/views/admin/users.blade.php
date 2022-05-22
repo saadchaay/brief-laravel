@@ -3,12 +3,8 @@
 @section('content')
 
 <div class="container mx-auto p-6">
-  {{-- <div class="flex flex-col w-full bg-white rounded-lg my-2">
-    <x-form :categories="$categories" :action="route('admin.post')" />
-  </div> --}}
-  @if ($posts->count() > 0)
   <div class="flex justify-center w-full bg-white p-5 rounded-lg mt-2 mb-6 font-bold uppercase">
-    Posts management
+    Users management
   </div>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
@@ -16,32 +12,32 @@
           <thead>
             <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
               <th class="px-4 py-3">#ID</th>
-              <th class="px-4 py-3">Category</th>
-              <th class="px-4 py-3">Content</th>
-              <th class="px-4 py-3">Posted by</th>
+              <th class="px-4 py-3">Full name</th>
+              <th class="px-4 py-3">email</th>
+              <th class="px-4 py-3">Phone</th>
               <th class="px-4 py-3">Created at</th>
               <th class="px-4 py-3">Action</th>
             </tr>
           </thead>
           <tbody class="bg-white">
-            @foreach ($posts as $post)
+            @foreach ($users as $user)
                 <tr class="text-gray-700">
                   <td class="px-4 py-3 border">
                     <div class="flex items-center text-sm">
                       <div>
-                        <p class="font-semibold text-black">{{$post->id}}</p>
+                        <p class="font-semibold text-black">{{$user->id}}</p>
                       </div>
                     </div>
                   </td>
-                  <td class="px-4 py-3 text-xs font-semibold border w-">{{$post->category->title}}</td>
+                  <td class="px-4 py-3 text-xs font-semibold border w-">{{$user->name}}</td>
                   <td class="px-4 py-3 text-xs border w-1/4">
-                    <span class="px-2 py-1 font-semibold">{{$post->body}}</span>
+                    <span class="px-2 py-1 font-semibold">{{$user->email}}</span>
                   </td>
-                  <td class="px-4 py-3 text-xs border">{{$post->user->name}}</td>
-                  <td class="px-4 py-3 text-xs border">{{$post->created_at}}</td>
+                  <td class="px-4 py-3 text-xs border">{{$user->phone}}</td>
+                  <td class="px-4 py-3 text-xs border">{{$user->created_at}}</td>
                   <td class="px-4 py-3 text-xs border">
                       <div class="flex">
-                          <form action="{{ route('admin.post.destroy', $post) }}" method="post">
+                          <form action="{{ route('admin.user.destroy', $user) }}" method="post">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="bg-none">
@@ -58,7 +54,7 @@
                                   <line x1="16" y1="5" x2="19" y2="8" />
                               </svg>
                           </a> --}}
-                          <a href="{{ route('admin.comments', $post) }}" title="show comments">
+                          <a href="{{ route('admin.posts', $user) }}" title="show posts">
                             <svg class="h-6 w-6 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">
                               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />  <circle cx="12" cy="12" r="3" />
                             </svg>
@@ -71,10 +67,5 @@
         </table>
       </div>
     </div>
-  @else
-  <div class="flex justify-center w-full bg-white p-5 rounded-lg mt-2 mb-6 font-bold uppercase">
-    This user has no posts
-  </div>
-  @endif
   </div>
 @endsection

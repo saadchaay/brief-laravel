@@ -17,8 +17,7 @@ class AdminCommentController extends Controller
         ]);
     }
 
-    public function store(Post $post, Request $request)
-    {
+    /* public function store(Post $post, Request $request){
         $this->validate($request, [
             'comment' => 'required',
         ]);
@@ -30,7 +29,7 @@ class AdminCommentController extends Controller
         $comment->save();
 
         return back();
-    }
+    } */
 
     public function destroy(Comment $comment)
     {

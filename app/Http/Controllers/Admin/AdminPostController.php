@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 
 class AdminPostController extends Controller
 {
@@ -14,12 +15,16 @@ class AdminPostController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function index()
+    public function index(User $user)
     {
         return view('admin.posts', [
-            'posts' => Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get(),
-            'categories' => Category::all(),
+            'posts' => $user->posts,
+            'user' => $user,
         ]);
+        // return view('admin.posts', [
+        //     'posts' => Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get(),
+        //     'categories' => Category::all(),
+        // ]);
     }
 
     public function store(Request $request)

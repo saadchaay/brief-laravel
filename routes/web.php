@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnlikeController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminCommentController;
+use App\Http\Controllers\Admin\AdminUserController;
 
 Route::get('/', function () {
     return view('home');
@@ -48,15 +49,17 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 Route::patch('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 
-Route::get('/admin/posts', [AdminPostController::class, 'index'])->name('admin.posts');
+Route::get('/admin/posts/{user}', [AdminPostController::class, 'index'])->name('admin.posts');
 Route::get('/admin/posts/{post}', [AdminPostController::class, 'show'])->name('admin.posts.show');
 Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('admin.post');
 Route::put('/admin/posts/{post}', [AdminPostController::class, 'update'])->name('admin.post.update');
 Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->name('admin.post.destroy');
 
+// Route::get('/admin/comments/{post}', [AdminPostController::class, 'index'])->name('admin.posts');
 Route::get('/admin/comments/{post}', [AdminCommentController::class, 'index'])->name('admin.comments');
-// Route::get('/admin/comments/{post}', [AdminPostController::class, 'show'])->name('admin.comments.show');
 Route::post('/admin/comments/{post}', [AdminCommentController::class, 'store'])->name('admin.comment');
-// Route::put('/admin/comments/{post}', [AdminPostController::class, 'update'])->name('admin.post.update');
 Route::delete('/admin/comments/{comment}', [AdminCommentController::class, 'destroy'])->name('admin.comment.destroy');
+
+Route::get('/admin', [AdminUserController::class, 'index'])->name('admin.users');
+Route::delete('/admin/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
 

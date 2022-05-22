@@ -4,19 +4,24 @@
 
 <div class="container mx-auto p-6">
 
-    <form action="{{ route('admin.comment', $post) }}" method="post">
+    {{-- <form action="{{ route('admin.comment', $post) }}" method="post">
       @csrf
       <div class="flex flex-col w-8/12 bg-white p-5 rounded-lg my-2">
         <label for="comment" class="my-2 hidden">add Comment</label>
         <div class="flex justify-between">
-          <input type="text" name="comment" id="comment" placeholder="Add comment here ..." class="flex-1 py-3 px-2 border rounded-lg mr-3">
+          <input type="text" name="comment" placeholder="Add comment here ..." class="flex-1 py-3 px-2 border rounded-lg mr-3">
           <button type="submit" class="rounded-lg bg-indigo-500 py-2 px-4 text-white">
             <span class="font-medium">Submit</span>
         </button>
         </div>
       </div>
-    </form>
-    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+    </form> --}}
+
+    @if ($comments->count() > 0)
+    <div class="flex justify-center w-full bg-white p-5 rounded-lg mt-2 mb-6 font-bold uppercase">
+      Comments management
+    </div>
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg mt-4">
       <div class="w-full overflow-x-auto">
         <table class="w-full">
           <thead>
@@ -56,14 +61,14 @@
                                   </svg>
                               </button>
                           </form>
-                          <a href="" id="open-btn">
+                          {{-- <a href="" id="open-btn">
                               <svg class="h-6 w-6 text-blue-500"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
                                   <path stroke="none" d="M0 0h24v24H0z"/> 
                                   <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /> 
                                   <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" /> 
                                   <line x1="16" y1="5" x2="19" y2="8" />
                               </svg>
-                          </a>
+                          </a> --}}
                       </div> 
                   </td>
                 </tr>
@@ -72,5 +77,10 @@
         </table>
       </div>
     </div>
+    @else
+    <div class="flex justify-center w-full bg-white p-5 rounded-lg mt-2 mb-6 font-bold uppercase">
+      THis post has no comments
+    </div>
+    @endif    
   </div>
 @endsection
