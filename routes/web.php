@@ -10,6 +10,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnlikeController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminCommentController;
 
 Route::get('/', function () {
     return view('home');
@@ -53,9 +54,9 @@ Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('admin.
 Route::put('/admin/posts/{post}', [AdminPostController::class, 'update'])->name('admin.post.update');
 Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->name('admin.post.destroy');
 
-// Route::get('/admin/comments', [AdminPostController::class, 'index'])->name('admin.comments');
+Route::get('/admin/comments/{post}', [AdminCommentController::class, 'index'])->name('admin.comments');
 // Route::get('/admin/comments/{post}', [AdminPostController::class, 'show'])->name('admin.comments.show');
 // Route::post('/admin/comments', [AdminPostController::class, 'store'])->name('admin.post');
 // Route::put('/admin/comments/{post}', [AdminPostController::class, 'update'])->name('admin.post.update');
-// Route::delete('/admin/comments/{post}', [AdminPostController::class, 'destroy'])->name('admin.post.destroy');
+Route::delete('/admin/comments/{comment}', [AdminCommentController::class, 'destroy'])->name('admin.comment.destroy');
 

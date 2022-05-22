@@ -4,6 +4,7 @@
 
 <div class="container mx-auto p-6">
     {{-- <x-form :categories="$categories" :action="route('admin.post')" /> --}}
+
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
         <table class="w-full">
@@ -27,7 +28,7 @@
                       </div>
                     </div>
                   </td>
-                  <td class="px-4 py-3 text-xs font-semibold border w-">12</td>
+                  <td class="px-4 py-3 text-xs font-semibold border w-">{{$comment->post->id}}</td>
                   <td class="px-4 py-3 text-xs border w-1/4">
                     <span class="px-2 py-1 font-semibold">{{$comment->body}}</span>
                   </td>
@@ -44,14 +45,14 @@
                                   </svg>
                               </button>
                           </form>
-                          {{-- <a href="{{ route('admin.comments.show', $comment) }}">
+                          <a href="" id="open-btn">
                               <svg class="h-6 w-6 text-blue-500"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
                                   <path stroke="none" d="M0 0h24v24H0z"/> 
                                   <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /> 
                                   <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" /> 
                                   <line x1="16" y1="5" x2="19" y2="8" />
                               </svg>
-                          </a> --}}
+                          </a>
                       </div> 
                   </td>
                 </tr>

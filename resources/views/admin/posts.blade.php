@@ -52,7 +52,7 @@
                                   <line x1="16" y1="5" x2="19" y2="8" />
                               </svg>
                           </a>
-                          <a href="{{ route('admin.comments.show', $post) }}" title="show comments">
+                          <a href="{{ route('admin.comments', $post) }}" title="show comments">
                             <svg class="h-6 w-6 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">
                               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />  <circle cx="12" cy="12" r="3" />
                             </svg>
