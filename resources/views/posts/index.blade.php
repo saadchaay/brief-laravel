@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="flex flex-col justify-center items-center">
-        <form action="{{ route('posts') }}" method="post" class="w-full flex flex-col justify-center items-center">
+        <x-form :categories="$categories" :action="route('posts')" />
+        {{-- <form action="{{ route('posts') }}" method="post" class="w-full flex flex-col justify-center items-center">
             <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">
                 @csrf
                 <select name="category_id" class="title bg-gray-100 border rounded-lg border-gray-300 p-2 mb-3 outline-none">
@@ -26,12 +27,12 @@
                     <span class="font-medium subpixel-antialiased">Post</span>
                 </button>
             </div>
-        </form>
+        </form> --}}
         
         <div class="flex flex-col w-full">
             @if ($posts->count())
             <div class="flex justify-center mt-3 ">
-                <div class="w-8/12 bg-white p-6 rounded-lg font-bold">
+                <div class="w-full sm:w-8/12 bg-white p-6 rounded-lg font-bold">
                     All Your Posts
                 </div>
             </div>
@@ -42,7 +43,7 @@
             </div>
             @else
             <div class="flex justify-center mt-3 ">
-                <div class="w-8/12 bg-white p-6 rounded-lg font-bold">
+                <div class="w-full sm:w-8/12 bg-white p-6 rounded-lg font-bold">
                     There are no posts
                 </div>
             </div>
