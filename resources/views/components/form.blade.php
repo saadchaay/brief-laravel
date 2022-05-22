@@ -1,7 +1,7 @@
 @props(['categories' => $categories, 'action' => $action])
 
     <form action="{{$action}}" method="post" class="w-full flex flex-col justify-center items-center">
-        <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">
+        <div class="flex flex-col w-full sm:w-8/12 bg-white p-6 rounded-lg my-2">
             @csrf
             <select name="category_id" class="title bg-gray-100 border rounded-lg border-gray-300 p-2 mb-3 outline-none">
                     <option value=""><span class="text-blue-800">Choose category ...</span> </option>

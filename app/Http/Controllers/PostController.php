@@ -113,41 +113,12 @@ class PostController extends Controller
             }
         } else {
             if(!empty($request->category)){
-                switch ($request->byPost) {
-                    case 'newest':
-                        $posts = Post::latest()->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
-                        return view('home', [
-                            'posts' => $posts,
-                            'categories' => Category::all(),
-                        ]);
-                    break;
-                    case 'top':
-                        $posts = Post::withCount('likes');
-                        $posts = $posts->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->orderBy('likes_count', 'desc')->get();
-                        return view('posts.filter', [
-                            'posts' => $posts,
-                            'categories' => Category::all(),
-                        ]);
-                    break;
-                }
-            } else {
-                switch ($request->byPost) {
-                    case 'newest':
-                        $posts = Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
-                        return view('home', [
-                            'posts' => $posts,
-                            'categories' => Category::all(),
-                        ]);
-                    break;
-                    case 'top':
-                        $posts = Post::withCount('likes');
-                        $posts = $posts->with(['user', 'category', 'comments', 'likes', 'unLikes'])->orderBy('likes_count', 'desc')->get();
-                        return view('posts.filter', [
-                            'posts' => $posts,
-                            'categories' => Category::all(),
-                        ]);
-                    break;
-                }
+                // $posts = new Post();
+                $posts = Post::latest()->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
+                    return view('posts.filter', [
+                        'posts' => $posts,
+                        'categories' => Category::all(),
+                    ]);
             }
         }
         $posts = Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();

@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="flex flex-col justify-center items-center">
-        <form action="{{ route('posts') }}" method="post" class="w-full flex flex-col justify-center items-center">
+        <x-form :categories="$categories" :action="route('posts')" />
+        {{-- <form action="{{ route('posts') }}" method="post" class="w-full flex flex-col justify-center items-center">
             <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">
                 @csrf
                 <select name="category_id" class="title bg-gray-100 border rounded-lg border-gray-300 p-2 mb-3 outline-none">
@@ -26,13 +27,13 @@
                     <span class="font-medium subpixel-antialiased">Post</span>
                 </button>
             </div>
-        </form>
+        </form> --}}
 
-        <div class="w-8/12 bg-white p-4 rounded-lg font-bold">
+        <div class="w-auto sm:w-8/12 bg-white p-4 rounded-lg font-bold">
             <div class="w-auto">
-                <form action="{{ route('filter') }}" method="post" class="flex justify-between items-center flex-wrap">
+                <form action="{{ route('filter') }}" method="post" class="flex flex-col justify-between items-center md:flex-row">
                     @csrf
-                    <div class="flex justify-start flex-wrap w-auto">
+                    <div class="flex justify-start w-full">
                         <select name="category" class="title border rounded-lg border-gray-300 py-2 px-2 outline-none">
                             <option value="">Choose category ...</option>
                             @foreach ($categories as $category)
@@ -40,7 +41,7 @@
                             @endforeach
                         </select>
                         <select name="byPost" class="border rounded-lg border-gray-300 py-2 px-2 ml-1">
-                            <option value="top">Sorted by ...</option>
+                            <option value="">Sorted by ...</option>
                             <option value="top">Top post</option>
                             <option value="newest">Newest post</option>
                         </select>

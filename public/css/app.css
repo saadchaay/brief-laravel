@@ -1001,6 +1001,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: none;
   }
 
+  .sm\:w-8\/12 {
+    width: 66.666667%;
+  }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
   .sm\:items-stretch {
     align-items: stretch;
   }
@@ -1016,6 +1028,24 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .sm\:pr-0 {
     padding-right: 0px;
+  }
+}
+@media (min-width: 768px) {
+
+  .md\:w-8\/12 {
+    width: 66.666667%;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:flex-col {
+    flex-direction: column;
+  }
+
+  .md\:flex-wrap {
+    flex-wrap: wrap;
   }
 }
 @media (min-width: 1024px) {
