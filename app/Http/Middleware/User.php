@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! Auth::user()->is_admin) {
+        if (Auth::user()->is_admin) {
             if ($request->expectsJson()) {
-                return response()->json(['error' => 'Unauthenticated. You are not an admin.'], 401);
+                return response()->json(['error' => 'Unauthenticated. You are not a user.'], 401);
             }
 
-            return redirect()->route('home.index');
+            return redirect()->route('admin.users');
         }
 
         return $next($request);

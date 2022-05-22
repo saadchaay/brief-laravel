@@ -43,13 +43,11 @@ class AdminPostController extends Controller
         return back();
     }
 
-    public function show(Post $post)
+    public function show()
     {
-        $categories = Category::all()->where('id', '!=', $post->category_id);
-        $post = Post::with(['user', 'category'])->find($post->id);
-        return view('admin.show', [
-            'post' => $post,
-            'categories' => $categories,
+        $posts = Post::latest()->with(['user', 'category'])->get();
+        return view('admin.posts', [
+            'posts' => $posts,
         ]);
     }
 

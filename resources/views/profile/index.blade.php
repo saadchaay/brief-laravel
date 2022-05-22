@@ -2,15 +2,24 @@
 
 @section('content')
 <div class="flex flex-col justify-center items-center">
-    <div class="w-8/12 bg-white p-6 rounded-lg font-bold mb-10">
-        User Profile
+    <div class="w-8/12 bg-white p-6 rounded-lg font-bold mb-4 uppercase">
+        @if(auth()->user()->is_admin)
+            Admin panel
+        @else
+            User panel
+        @endif
     </div>
 
     <div class="flex w-8/12 justify-center flex-wrap ietms-center">
         {{-- USER FORM --}}
         <div class="bg-white p-6 rounded-lg font-bold w-full my-2">
             <div class="w-4/12 font-medium my-3">
-                Update user information
+                @if(auth()->user()->is_admin)
+                    Update admin information
+                @else
+                    Update user information
+                @endif
+                
             </div>
             <form action="{{ route('profile.update', $user) }}" method="post" class="w-auto">
                 @csrf

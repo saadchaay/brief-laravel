@@ -50,7 +50,7 @@ Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profi
 Route::patch('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 
 Route::get('/admin/posts/{user}', [AdminPostController::class, 'index'])->name('admin.posts');
-Route::get('/admin/posts/{post}', [AdminPostController::class, 'show'])->name('admin.posts.show');
+// Route::get('/admin/posts/{post}', [AdminPostController::class, 'show'])->name('admin.posts.show');
 Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('admin.post');
 Route::put('/admin/posts/{post}', [AdminPostController::class, 'update'])->name('admin.post.update');
 Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->name('admin.post.destroy');
@@ -62,4 +62,7 @@ Route::delete('/admin/comments/{comment}', [AdminCommentController::class, 'dest
 
 Route::get('/admin', [AdminUserController::class, 'index'])->name('admin.users');
 Route::delete('/admin/{user}', [AdminUserController::class, 'destroy'])->name('admin.user.destroy');
+
+Route::get('/admin/posts', [AdminPostController::class, 'show'])->name('admin.posts.show');
+Route::get('/admin/comments', [AdminCommentController::class, 'show'])->name('admin.comments.show');
 

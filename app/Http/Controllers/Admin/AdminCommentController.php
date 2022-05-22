@@ -36,6 +36,14 @@ class AdminCommentController extends Controller
         return back();
     } */
 
+    public function show()
+    {
+        $comments = Comment::latest()->with(['user', 'post'])->get();
+        return view('admin.comments', [
+            'comments' => $comments,
+        ]);
+    }
+
     public function destroy(Comment $comment)
     {
         $comment->delete();

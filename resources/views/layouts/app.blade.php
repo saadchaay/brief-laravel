@@ -44,12 +44,20 @@
                     <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
                     <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
                     </div>
-                    <div class="hidden sm:block sm:ml-6">
-                        <div class="flex space-x-4">
-                            <a href="/" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
-                            <a href="{{ route('posts.all') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Posts</a>
+                    @auth   
+                        <div class="hidden sm:block sm:ml-6">
+                            <div class="flex space-x-4">
+                                @if(auth()->user()->is_admin)
+                                    <a href="{{ route('admin.users') }}" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-white" aria-current="page">Users</a>
+                                    <a href="{{ route('admin.posts.show') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Posts</a>
+                                    <a href="{{ route('admin.comments.show') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Comments</a>
+                                @else
+                                    <a href="/" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
+                                    <a href="{{ route('posts.all') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Posts</a>
+                                @endif   
+                            </div>
                         </div>
-                    </div>
+                    @endauth
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">           
                     @auth
@@ -87,14 +95,25 @@
             </div>
 
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div class="sm:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
-                <a href="{{ route('posts.all') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Post</a>
+            @auth 
+                <div class="sm:hidden" id="mobile-menu">
+                    <div class="px-2 pt-2 pb-3 space-y-1">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                    
+                        @if(auth()->user()->is_admin)
+                            <a href="{{ route('admin.users') }}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Users</a>
+                            <a href="{{ route('admin.posts.show') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Posts</a>
+                            <a href="{{ route('admin.comments.show') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Comments</a>
+                        @else
+                            <a href="/" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+                            <a href="{{ route('posts.all') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Post</a>
+                        @endif
+                    
+                    </div>
                 </div>
-            </div>
+            @endauth
         </nav>
+        
         @yield('content')
         @env('local')
             <script src="http://localhost:35729/livereload.js"></script>
