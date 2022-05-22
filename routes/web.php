@@ -56,7 +56,7 @@ Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->n
 
 Route::get('/admin/comments/{post}', [AdminCommentController::class, 'index'])->name('admin.comments');
 // Route::get('/admin/comments/{post}', [AdminPostController::class, 'show'])->name('admin.comments.show');
-// Route::post('/admin/comments', [AdminPostController::class, 'store'])->name('admin.post');
+Route::post('/admin/comments/{post}', [AdminCommentController::class, 'store'])->name('admin.comment');
 // Route::put('/admin/comments/{post}', [AdminPostController::class, 'update'])->name('admin.post.update');
 Route::delete('/admin/comments/{comment}', [AdminCommentController::class, 'destroy'])->name('admin.comment.destroy');
 

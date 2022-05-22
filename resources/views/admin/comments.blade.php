@@ -3,8 +3,19 @@
 @section('content')
 
 <div class="container mx-auto p-6">
-    {{-- <x-form :categories="$categories" :action="route('admin.post')" /> --}}
 
+    <form action="{{ route('admin.comment', $post) }}" method="post">
+      @csrf
+      <div class="flex flex-col w-8/12 bg-white p-5 rounded-lg my-2">
+        <label for="comment" class="my-2 hidden">add Comment</label>
+        <div class="flex justify-between">
+          <input type="text" name="comment" id="comment" placeholder="Add comment here ..." class="flex-1 py-3 px-2 border rounded-lg mr-3">
+          <button type="submit" class="rounded-lg bg-indigo-500 py-2 px-4 text-white">
+            <span class="font-medium">Submit</span>
+        </button>
+        </div>
+      </div>
+    </form>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
         <table class="w-full">

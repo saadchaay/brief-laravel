@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="container mx-auto p-6">
+  <div class="flex flex-col w-full bg-white rounded-lg my-2">
     <x-form :categories="$categories" :action="route('admin.post')" />
+  </div>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
         <table class="w-full">

@@ -13,7 +13,23 @@ class AdminCommentController extends Controller
     {
         return view('admin.comments', [
             'comments' => $post->comments,
+            'post' => $post,
         ]);
+    }
+
+    public function store(Post $post, Request $request)
+    {
+        $this->validate($request, [
+            'comment' => 'required',
+        ]);
+
+        $comment = new Comment;
+        $comment->body = $request->comment;
+        $comment->post_id = $post->id;
+        $comment->user_id = auth()->user()->id;
+        $comment->save();
+
+        return back();
     }
 
     public function destroy(Comment $comment)
