@@ -10,10 +10,7 @@ class AdminUserController extends Controller
 {
     public function __construct()
     {
-        
-            if(auth()->user()->role != 'admin') {
-                abort(404);
-            }
+        $this->middleware(['auth', 'admin']);
     }
     
     public function index()
