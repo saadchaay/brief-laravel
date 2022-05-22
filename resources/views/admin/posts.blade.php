@@ -35,7 +35,7 @@
                   <td class="px-4 py-3 text-xs border">{{$post->created_at}}</td>
                   <td class="px-4 py-3 text-xs border">
                       <div class="flex">
-                          <form action="{{ route('admin.destroy', $post) }}" method="post">
+                          <form action="{{ route('admin.post.destroy', $post) }}" method="post">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="bg-none">

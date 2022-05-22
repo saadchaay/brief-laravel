@@ -5,7 +5,7 @@
     <div class="w-8/12 bg-white p-6 rounded-lg font-bold">
         Update Post
     </div>
-    <form action="{{ route('admin.update', $post) }}" method="post" class="w-full flex flex-col justify-center items-center">
+    <form action="{{ route('admin.post.update', $post) }}" method="post" class="w-full flex flex-col justify-center items-center">
         @csrf
         @method('PUT')
         <div class="flex flex-col w-8/12 bg-white p-6 rounded-lg my-2">

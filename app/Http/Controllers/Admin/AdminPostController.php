@@ -16,7 +16,7 @@ class AdminPostController extends Controller
 
     public function index()
     {
-        return view('admin.index', [
+        return view('admin.posts', [
             'posts' => Post::latest()->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get(),
             'categories' => Category::all(),
         ]);
