@@ -50,6 +50,6 @@ Route::patch('/profile/{user}', [ProfileController::class, 'edit'])->name('profi
 
 Route::get('/admin', [AdminPostController::class, 'index'])->name('admin.posts');
 Route::get('/admin/posts/{post}', [AdminPostController::class, 'show'])->name('admin.posts.show');
-Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('admin.posts');
+Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('admin.post');
 Route::put('/admin/posts/{post}', [AdminPostController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{post}', [AdminPostController::class, 'destroy'])->name('admin.destroy');

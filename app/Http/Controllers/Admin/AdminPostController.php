@@ -59,7 +59,7 @@ class AdminPostController extends Controller
             'body' => $request->body,
         ]);
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.posts');
     }
 
     public function destroy(Post $post)

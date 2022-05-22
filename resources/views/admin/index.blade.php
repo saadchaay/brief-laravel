@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container mx-auto p-6">
-    <x-form :categories="$categories" :action="route('admin.posts')" />
+    <x-form :categories="$categories" :action="route('admin.post')" />
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">
         <table class="w-full">
