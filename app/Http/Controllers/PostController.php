@@ -113,7 +113,6 @@ class PostController extends Controller
             }
         } else {
             if(!empty($request->category)){
-                // $posts = new Post();
                 $posts = Post::latest()->where('category_id', $request->category)->with(['user', 'category', 'comments', 'likes', 'unLikes'])->get();
                     return view('posts.filter', [
                         'posts' => $posts,
