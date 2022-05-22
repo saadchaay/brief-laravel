@@ -4,7 +4,7 @@
 
 <div class="container mx-auto p-6">
   <div class="flex justify-center w-full bg-white p-5 rounded-lg mt-2 mb-6 font-bold uppercase">
-    Users management
+    Users management {{auth()->user()->role}}
   </div>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
       <div class="w-full overflow-x-auto">

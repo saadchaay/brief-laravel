@@ -9,6 +9,13 @@ use App\Models\Post;
 
 class AdminCommentController extends Controller
 {
+    public function __construct()
+    {
+        if(auth()->user()->role != 'admin') {
+            abort(404);
+        }
+    }
+    
     public function index(Post $post)
     {
         return view('admin.comments', [

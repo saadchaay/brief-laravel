@@ -12,7 +12,9 @@ class AdminPostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth']);
+        if(auth()->user()->role != 'admin') {
+            abort(404);
+        }
     }
 
     public function index(User $user)
